@@ -4,7 +4,7 @@ Enterprise goal setting, approval, quarterly check-in, reporting, and organizati
 
 ## Live Demo
 
-Working link: https://raw.githack.com/Lakshy403/GoalTrack--Performance-Portal/gh-pages/index.html
+Working link: https://lakshy403.github.io/GoalTrack--Performance-Portal/
 
 Backup Vercel link: https://goaltrack-performance-portal.vercel.app
 
