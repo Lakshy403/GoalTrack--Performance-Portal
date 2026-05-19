@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import ProtectedRoute from '@/components/auth/ProtectedRoute';
 import LoginPage from '@/pages/auth/LoginPage';
@@ -24,6 +24,7 @@ import useAuthStore from '@/store/authStore';
 
 export default function AppRouter() {
   const { isAuthenticated, user } = useAuthStore();
+  const Router = import.meta.env.BASE_URL === '/' ? BrowserRouter : HashRouter;
 
   const getDefaultRoute = () => {
     if (!isAuthenticated) return '/login';
@@ -32,7 +33,7 @@ export default function AppRouter() {
   };
 
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL}>
+    <Router>
       <Routes>
         <Route path="/login" element={isAuthenticated ? <Navigate to={getDefaultRoute()} replace /> : <LoginPage />} />
 
@@ -68,6 +69,6 @@ export default function AppRouter() {
 
         <Route path="*" element={<Navigate to={getDefaultRoute()} replace />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
