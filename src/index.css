@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* ─── Light Mode: Warm Sage & Lavender ─── */
+  --color-background: 160 20% 97%;        /* warm sage-tinted off-white */
+  --color-foreground: 220 25% 12%;        /* deep charcoal, very readable */
+  --color-card: 165 18% 96%;              /* soft sage-cream card surface */
+  --color-card-foreground: 220 25% 12%;
+  --color-popover: 165 18% 96%;
+  --color-popover-foreground: 220 25% 12%;
+  --color-primary: 168 65% 38%;           /* teal-emerald primary */
+  --color-primary-foreground: 160 20% 98%;
+  --color-secondary: 165 16% 92%;         /* muted sage secondary */
+  --color-secondary-foreground: 220 20% 18%;
+  --color-muted: 168 14% 91%;             /* sage-tinted muted */
+  --color-muted-foreground: 220 12% 48%;  /* readable grey text */
+  --color-accent: 168 14% 91%;
+  --color-accent-foreground: 220 20% 18%;
+  --color-destructive: 346.8 77.2% 49.8%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 168 14% 88%;            /* soft sage border */
+  --color-input: 168 14% 88%;
+  --color-ring: 168 65% 38%;              /* teal ring */
+  --color-success: 142.1 76.2% 36.3%;
+  --color-success-foreground: 355.7 100% 97.3%;
+  --color-warning: 38 92% 50%;
+  --color-warning-foreground: 48 96% 89%;
+  --color-info: 199 89% 48%;
+  --color-info-foreground: 198 93% 93%;
+  --radius: 0.75rem;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 72px;
+  }
+
+  .dark {
+    --color-background: 222.2 84% 4.9%;
+    --color-foreground: 210 40% 98%;
+    --color-card: 222.2 84% 6.9%;
+    --color-card-foreground: 210 40% 98%;
+    --color-popover: 222.2 84% 6.9%;
+    --color-popover-foreground: 210 40% 98%;
+    --color-primary: 239 84% 67%;
+    --color-primary-foreground: 222.2 47.4% 11.2%;
+    --color-secondary: 217.2 32.6% 17.5%;
+    --color-secondary-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+    --color-accent: 217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-destructive: 346.8 77.2% 49.8%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
+    --color-ring: 239 84% 67%;
+    --color-success: 142.1 70.6% 45.3%;
+    --color-warning: 38 92% 50%;
+    --color-info: 199 89% 48%;
+  }
+
+  * {
+    border-color: hsl(var(--color-border));
+  }
+
+  body {
+    @apply bg-gradient-to-br from-emerald-50/60 via-teal-50/30 to-violet-50/40 text-slate-800;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  .dark body {
+    @apply bg-[#0B1121] text-slate-100;
+  }
+}
+
+@layer utilities {
+  .surface-card {
+    @apply bg-gradient-to-br from-white/50 via-emerald-50/20 to-violet-50/20 backdrop-blur-md border border-teal-100/60 shadow-sm;
+  }
+  
+  .dark .surface-card {
+    @apply bg-none bg-[#131B2F] border-[#1E293B] shadow-lg shadow-black/20;
+    background-image: none !important;
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-teal-600 to-emerald-600 text-white rounded-xl shadow-md transition-all duration-300 hover:shadow-teal-500/25 hover:-translate-y-0.5 hover:from-teal-500 hover:to-emerald-500;
+  }
+
+  .dark .btn-gradient {
+    @apply bg-none bg-blue-600 hover:bg-blue-500 shadow-blue-900/20 hover:shadow-blue-500/25;
+    background-image: none !important;
+  }
+
+  /* Status Colors */
+  .status-success {
+    @apply bg-emerald-50 text-emerald-700 border border-emerald-200/60;
+  }
+  .dark .status-success {
+    @apply bg-emerald-950/40 text-emerald-300 border-emerald-800;
+  }
+
+  .status-warning {
+    @apply bg-amber-50 text-amber-700 border border-amber-200/60;
+  }
+  .dark .status-warning {
+    @apply bg-amber-950/40 text-amber-300 border-amber-800;
+  }
+
+  .status-error {
+    @apply bg-rose-50 text-rose-700 border border-rose-200/60;
+  }
+  .dark .status-error {
+    @apply bg-rose-950/40 text-rose-300 border-rose-800;
+  }
+
+  .status-neutral {
+    @apply bg-slate-100 text-slate-700 border border-slate-200;
+  }
+  .dark .status-neutral {
+    @apply bg-slate-800 text-slate-300 border-slate-700;
+  }
+  
+  .status-info {
+    @apply bg-teal-50 text-teal-700 border border-teal-200/60;
+  }
+  .dark .status-info {
+    @apply bg-indigo-950/40 text-indigo-300 border-indigo-800;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-10px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
