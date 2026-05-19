@@ -1,12 +1,15 @@
 import axios from 'axios';
 import useAuthStore from '@/store/authStore';
+import demoAdapter from './demoAdapter';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3001/api' : '/api');
+const USE_DEMO_ADAPTER = typeof window !== 'undefined' && window.location.hostname.endsWith('github.io');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 15000,
+  adapter: USE_DEMO_ADAPTER ? demoAdapter : undefined,
 });
 
 // Attach JWT token

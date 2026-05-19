@@ -6,6 +6,8 @@ Enterprise goal setting, approval, quarterly check-in, reporting, and organizati
 
 Working link: https://atomsberg-goaltrack.vercel.app
 
+Backup GitHub Pages link: https://lakshy403.github.io/GoalTrack--Performance-Portal/
+
 Demo credentials:
 
 | Role | Email | Password |
@@ -142,4 +144,3 @@ API health: http://localhost:3001/api/health
 | Bug readiness | Production build verified; key API flows smoke-tested |
 | Good-to-have features | Org graph, analytics, notifications, audit logs, escalation demo, Vercel demo mode |
 | Cost optimization | Lightweight Express API, pooled MySQL access, Vercel static hosting/serverless API |
-
